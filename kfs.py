@@ -1,89 +1,86 @@
-'''
-Created on May 3, 2012
-
-@author: anduril
-'''
+import os, sys, stat, errno, time
 import fuse
-import os
-import stat
-import errno
-from kfsentity import KFSEntity
-import logging
-
+from metafs import MetaFS
 fuse.fuse_python_api = (0, 2)
-logging.basicConfig(filename='kfs.log',level=logging.DEBUG)
-print "test"
 
-def zstat(stat):
-    stat.st_mode  = 0
-    stat.st_ino   = 0
-    stat.st_dev   = 0
-    stat.st_nlink = 2
-    stat.st_uid   = 0
-    stat.st_gid   = 0
-    stat.st_size  = 0
-    stat.st_atime = 0
-    stat.st_mtime = 0
-    stat.st_ctime = 0
-    return stat
+import logging
+LOG_FILENAME = 'log'
+logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG)
 
 class KFS(fuse.Fuse):
-    def __init__(self, *args, **kwargs):
-        fuse.Fuse.__init__(self, *args, **kwargs)
-        
-        self.uid = os.getuid()
-        self.gid = os.getgid()
-        
-        root_dir = KFSEntity(0755 | stat.S_IFDIR, self.uid, self.gid)
-        self._storage = {'/' : root_dir}
-    
+    def __init__(self, metafs, *args, **kwargs):
+	fuse.Fuse.__init__(self, *args, **kwargs)
+	self.metafs=metafs
+
+    # --- Metadata -----------------------------------------------------------
     def getattr(self, path):
-        if not path in self._storage:
-            return -errno.ENOENT
-        
-        item = self._storage[path]
-        st = zstat(fuse.Stat())
-        st.st_mode  = item.mode
-        st.st_uid   = item.uid
-        st.st_gid   = item.gid
-        st.st_atime = item.atime
-        st.st_mtime = item.mtime
-        st.st_ctime = item.ctime
-        st.st_size  = len(item.data)
-        logging.info('returning path entity - '+str(st))
-        return st
-    
+	logging.info("getattr")
+	return self.metafs.getattr(path)
+
+    def chmod(self, path, mode):
+	return self.metafs.chmod(path, mode)
+
+    def chown(self, path, uid, gid):
+	return self.metafs.chown(path, uid, gid)
+
+    def utime(self, path, times):
+	return self.metafs.utime(path, times)
+
+    # --- Namespace ----------------------------------------------------------
+    def unlink(self, path):
+	return self.metafs.unlink(path)
+
+    def rename(self, oldpath, newpath):
+	return self.metafs.rename(self, oldpath, newpath)
+
+    # --- Links --------------------------------------------------------------
+    def symlink(self, path, newpath):
+	return self.metafs.symlink(path, newpath)
+
+    def readlink(self, path):
+	return self.metafs.readlink(path)
+
+
+    # --- Files --------------------------------------------------------------
+    def mknod(self, path, mode, dev):
+	return self.metafs.mknod(path, mode, dev)
+
+    def create(self, path, flags, mode):
+	return self.metafs.create(path, flags, mode)
+
+    def truncate(self, path, len):
+	return self.metafs.truncate(path, len)
+
+    def read(self, path, size, offset):
+	return self.metafs.read(path, size, offset)
+
+    def write(self, path, buf, offset):
+	return self.metafs.write(path, buf, offset)
+
+    # --- Directories --------------------------------------------------------
     def mkdir(self, path, mode):
-        self._storage[path] = KFSEntity(mode | stat.S_IFDIR, self.uid, self.gid)
-        logging.info("created entry in key-value store for new dir.")
-        logging.info("updating parent. started..")
-        self._add_to_parent_dir(path)
-        
+	logging.info("Inside mkdir")
+	return self.metafs.mkdir(path, mode)
+
+    def rmdir(self, path):
+	return self.metafs.rmdir(path)
+
     def readdir(self, path, offset):
-        dir_items = self._storage[path].data
-        for item in dir_items:
-            yield fuse.Direntry(item)
-            
-    def _add_to_parent_dir(self, path):
-        parent_path = os.path.dirname(path)
-        filename = os.path.basename(path)
-        self._storage[parent_path].data.add(filename)
-        logging.info("updated parent content - completed.")
-            
-        
+	return self.metafs.readdir(path, offset)
+
 
 def main():
     usage="""
-        KVFS - Key Value File System
-    """ + fuse.Fuse.fusage
-    logging.info("creating a new instance of filesystem")
-    server = KFS(version="%prog "+ fuse.__version__, 
-                    usage=usage, dash_s_do='setsingle')
+HTFS - HashTable File-System
+
+""" + fuse.Fuse.fusage
+    metafs = MetaFS()
+    server = KFS(metafs,version="%prog " + fuse.__version__,usage=usage,dash_s_do='setsingle')
+
     server.parse(errex=1)
-    logging.info("Calling main for file system")
     server.main()
-    
 
 if __name__ == '__main__':
-    print "test"
     main()
+
+
