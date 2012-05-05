@@ -15,8 +15,8 @@ class Item(object):
         # ----------------------------------- Metadata --
 	
         self.atime = time.time()   # time of last acces
-        self.mtime = self.attrs['atime']    # time of last modification
-        self.ctime = self.attrs['atime']    # time of last status change
+        self.mtime = self.atime    # time of last modification
+        self.ctime = self.atime    # time of last status change
 
         self.dev  = 0        # device ID (if special file)
         self.mode = mode     # protection and file-type
