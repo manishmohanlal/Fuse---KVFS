@@ -1,0 +1,24 @@
+INFO:root:creating a new instance of filesystem
+INFO:root:Calling main for file system
+INFO:root:creating a new instance of filesystem
+INFO:root:Calling main for file system
+INFO:root:creating a new instance of filesystem
+INFO:root:returning path entity - <fuse.Stat object at 0x9025bcc>
+INFO:root:Calling main for file system
+INFO:root:returning path entity - <fuse.Stat object at 0x9025bcc>
+INFO:root:returning path entity - <fuse.Stat object at 0x9025bcc>
+INFO:root:created entry in key-value store for new dir.
+INFO:root:updating parent. started..
+INFO:root:updated parent content - completed.
+INFO:root:returning path entity - <fuse.Stat object at 0x9025ccc>
+INFO:root:creating a new instance of filesystem
+INFO:root:Calling main for file system
+INFO:root:creating a new instance of filesystem
+INFO:root:Calling main for file system
+INFO:root:returning path entity - <fuse.Stat object at 0x8bb9c2c>
+INFO:root:created entry in key-value store for new dir.
+INFO:root:updating parent. started..
+INFO:root:updated parent content - completed.
+INFO:root:returning path entity - <fuse.Stat object at 0x8bb9cac>
+INFO:root:returning path entity - <fuse.Stat object at 0x8bb9cac>
+INFO:root:returning path entity - <fuse.Stat object at 0x8bb9cac>
