@@ -37,6 +37,7 @@ class Item(object):
 	return json.dumps(self.attrs)
 
 def read(data, offset, length):
+    logging.info("data")
     return data[offset:offset+length]
 
 
@@ -189,7 +190,7 @@ class MetaFS:
 
     def truncate(self, path, len):
         item = json.loads(self.kv.get(path))
-        item['data']=truncate(item['data'],len)
+        item['data']=truncate(str(item['data']),len)
 	self.kv.updateFile(path,json.dumps(item))
 	self.kv.commit()
 	
@@ -197,7 +198,7 @@ class MetaFS:
     def read(self, path, size, offset):
 	#logging .info("data = "+str(self._storage[path].data))
         item = json.loads(self.kv.get(path))
-        return read(item['data'], offset, size)
+        return read(str(item['data']), offset, size)
 
     def write(self, path, buf, offset):
 	logging.info("write invoked offset = "+str(offset));
@@ -210,7 +211,6 @@ class MetaFS:
 
     # --- Directories --------------------------------------------------------
     def mkdir(self, path, mode):
-	logging.info("path mkdir: "+path)
 	self.kv.addFile(path,Item(mode | stat.S_IFDIR, self.uid, self.gid).convertJSON())
 	self.kv.commit()
         self._add_to_parent_dir(path)
