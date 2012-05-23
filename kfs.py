@@ -1,11 +1,11 @@
 import os, sys, stat, errno, time
 import fuse
-from metafs import MetaFS
-fuse.fuse_python_api = (0, 2)
-
 import logging
-LOG_FILENAME = 'log'
-logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG)
+from metafs import MetaFS
+from helper import *
+
+
+fuse.fuse_python_api = (0, 2)
 
 class KFS(fuse.Fuse):
     def __init__(self, metafs, *args, **kwargs):
@@ -74,7 +74,13 @@ def main():
 HTFS - HashTable File-System
 
 """ + fuse.Fuse.fusage
-    metafs = MetaFS()
+
+    db_loc, host, port, log, mode = initialize()
+    
+    LOGFILE = log
+    logging.basicConfig(filename=LOGFILE,level=logging.DEBUG)
+
+    metafs = MetaFS(db_loc=db_loc, meta_host=host, meta_port=port, logfile=log, defaultMode=mode )
     server = KFS(metafs,version="%prog " + fuse.__version__,usage=usage,dash_s_do='setsingle')
 
     server.parse(errex=1)
