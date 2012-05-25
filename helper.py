@@ -11,14 +11,15 @@ from item import Item
 import ConfigParser
 
 def initialize():
+    initialValSet = {}
     config = ConfigParser.RawConfigParser()
     config.read('kfs_config.cfg')
-    DATAFILE = config.get('KFSConfig', 'dataFile')
-    METADATAHOST = config.get('KFSConfig', 'metadataHost')
-    METADATAPORT = config.getint('KFSConfig', 'metadataPort')
-    LOGFILE = config.get('KFSConfig', 'logFile')
-    MODE = config.getint('KFSConfig', 'defaultMode')
-    return DATAFILE, METADATAHOST, METADATAPORT, LOGFILE, MODE
+    initialValSet['db_loc'] = config.get('KFSConfig', 'dataFile')
+    initialValSet['mongo_host'] = config.get('KFSConfig', 'metadataHost')
+    initialValSet['mongo_port'] = config.getint('KFSConfig', 'metadataPort')
+    initialValSet['log'] = config.get('KFSConfig', 'logFile')
+    initialValSet['mode'] = config.getint('KFSConfig', 'defaultMode')
+    return initialValSet
 
 def read(data, offset, length):
     rbuf = ""
@@ -55,8 +56,8 @@ def truncate(data, length):
 def write(olddata, offset, newdata):
     logging.info("new data is "+newdata)
     key = "manish lund hai!"
-    bytesWritten = len(newdata)
     data = mycrypto.encrypt_string(newdata, key)
+    bytesWritten = len(data)
     #data = pycrypt.encrypt(newdata, key)
     newcontent = olddata[:offset] + data + olddata[offset+bytesWritten:]
     totalLength = len(newcontent)

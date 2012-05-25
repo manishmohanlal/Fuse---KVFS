@@ -74,13 +74,16 @@ def main():
 HTFS - HashTable File-System
 
 """ + fuse.Fuse.fusage
-
-    db_loc, host, port, log, mode = initialize()
-    
+    initialValSet = initialize()
+    module = sys.modules[__name__]	
+     
+    for key,value in initialValSet.items():
+    	globals()[key] = value 
+    print globals()
     LOGFILE = log
     logging.basicConfig(filename=LOGFILE,level=logging.DEBUG)
 
-    metafs = MetaFS(db_loc=db_loc, meta_host=host, meta_port=port, logfile=log, defaultMode=mode )
+    metafs = MetaFS(db_loc=db_loc, meta_host=mongo_host, meta_port=mongo_port, logfile=log, defaultMode=mode )
     server = KFS(metafs,version="%prog " + fuse.__version__,usage=usage,dash_s_do='setsingle')
 
     server.parse(errex=1)

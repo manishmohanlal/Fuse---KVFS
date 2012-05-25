@@ -18,8 +18,8 @@ class MetaFS:
      
     def __init__(self, **kwargs):
         '''initialize and insert root entry'''
-        LOGFILE = kwargs['logfile']
-        logging.basicConfig(filename=LOGFILE,level=logging.DEBUG)
+        #LOGFILE = kwargs['logfile']
+        #logging.basicConfig(filename=LOGFILE,level=logging.DEBUG)
         logging.info("Initializing MetaFS")
 
         self.uid = os.getuid()
@@ -52,6 +52,7 @@ class MetaFS:
         st.st_mtime = item.mtime
         st.st_ctime = item.ctime
         st.st_size = item.datalen
+	self.blockId = 0
         return st
 
     def chmod(self, path, mode):
@@ -191,12 +192,16 @@ class MetaFS:
         return read(str(data), offset, size)
 
     def write(self, path, buf, offset):
-        logging.info("Writing with buffer : %s offset: %s " % (buf, offset));
-        logging.info("Write buffer is "+self.wbuff)
+	lastWrite = 1
+	if len(buf) < self.PAGESIZE:
+		lastWrite = 0
+	self.blockId += 1
+        #logging.info("Writing with buffer : %s offset: %s " % (buf, offset));
+        logging.info("Before Writing\n Write buffer is %s"% len(self.wbuff))
         returnBuf = len(buf)
-        
         counter = 0
-        while len(buf) > 0:
+        
+	while len(buf) > 0:
             n = self.PAGESIZE - self.HEADER - len(self.wbuff)
             
             self.wbuff += buf[:n]
@@ -220,10 +225,11 @@ class MetaFS:
                 
                 #Add Log entry
                 logging.info(str(bytesWritten)+" bytes written to "+path)
+		logging.info("Block ID "+str(self.blockId))
                 
             buf = buf[n:]
         
-        if counter == 0:
+        if counter == 0 or lastWrite == 0:
             olddata = self.kv.get(path)
             #Append wbuffer to old data, encrypt, add header and return
             newdata, bytesWritten, totalLength = write(olddata, offset, self.wbuff)
@@ -240,7 +246,9 @@ class MetaFS:
                 
             #Add Log entry
             logging.info(str(bytesWritten)+" bytes written to "+path)
+	    logging.info("Block ID "+ str(self.blockId))
         
+	logging.info("After Writing\n Offset: %s, Buffer : %s, Write Buffer: %s" % (offset, len(buf), len(self.wbuff)))
         return returnBuf
 
     # --- Directories --------------------------------------------------------
