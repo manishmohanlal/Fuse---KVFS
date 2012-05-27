@@ -68,6 +68,19 @@ class KFS(fuse.Fuse):
     def readdir(self, path, offset):
 	return self.metafs.readdir(path, offset)
 
+    #--- Extra Attributes -----------------------------------------------------
+    def setxattr(self, path, name, value, flags):
+	return self.metafs.setxattr(path, name, value, flags)
+
+    def getxattr(self, path, name, size):
+	value = self.metafs.getxattr(path, name, size)
+	return str(value)
+
+    def listxattr(self, path, size):
+	return self.metafs.listxattr(path, size)
+
+    def removexattr(self, path, name):
+	return self.metafs.removexattr(path, name)
 
 def main():
     usage="""
@@ -79,15 +92,23 @@ HTFS - HashTable File-System
      
     for key,value in initialValSet.items():
     	globals()[key] = value 
-    print globals()
-    LOGFILE = log
-    logging.basicConfig(filename=LOGFILE,level=logging.DEBUG)
+    
+    #for key, value in globals():
+	#	print "%s = %s\n" % (key, value)
 
-    metafs = MetaFS(db_loc=db_loc, meta_host=mongo_host, meta_port=mongo_port, logfile=log, defaultMode=mode )
+	
+
+    logging.basicConfig(filename=log,level=logging.DEBUG)
+
+
+    metafs = MetaFS(db_loc=db_loc, host=mongo_host, port=int(mongo_port), log=log, mode=mode, 
+			attributes=Attributes, extensions=Extensions)
+
     server = KFS(metafs,version="%prog " + fuse.__version__,usage=usage,dash_s_do='setsingle')
 
     server.parse(errex=1)
     server.main()
+
 
 if __name__ == '__main__':
     main()

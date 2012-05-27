@@ -33,6 +33,7 @@ class Item(object):
             self.uid = uid      # user ID of owner
             self.gid = gid      # group ID of owner
             self.datalen = 0
+	    self.category = ""
         # ------------------------ Extended Attributes --
             self.xattr = {}
 

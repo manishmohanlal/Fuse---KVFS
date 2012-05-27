@@ -15,26 +15,37 @@ class MetaFS:
     wbuff = ""
     PAGESIZE = 4096
     HEADER = 93
-     
+    attributes = {}
+    extensions = {}     
+    defaultMode = 0755
+
     def __init__(self, **kwargs):
         '''initialize and insert root entry'''
-        #LOGFILE = kwargs['logfile']
-        #logging.basicConfig(filename=LOGFILE,level=logging.DEBUG)
+	#for key, value in globals().iteritems():
+	#	print "%s ==> %s" % (key, value)
+
+	logging.basicConfig(filename=kwargs['log'],level=logging.DEBUG)
         logging.info("Initializing MetaFS")
 
         self.uid = os.getuid()
         self.gid = os.getgid()
-        self.defaultMode = kwargs['defaultMode']
+
+	self.attributes = kwargs['attributes']
+	self.extensions = kwargs['extensions']
+
+       	self.defaultMode = int(kwargs['mode'])
+
         #initialize data and metadata stores
         self.kv = bsddbWrapper(kwargs['db_loc'])
-        self.mongo = mongoWrapper(kwargs['meta_host'], kwargs['meta_port'])
-        
+        self.mongo = mongoWrapper(kwargs['host'], kwargs['port'])
+	 
         item = Item(self.defaultMode | stat.S_IFDIR, self.uid, self.gid)
         
         self.mongo.addFile('/', item.getMetadata())
         self.kv.addFile('/', item.getData())
         self.kv.commit()
-
+	
+	
     # --- Metadata -----------------------------------------------------------
     def getattr(self, path):
 	'''Get attributes, returns error if path(key) does not exist'''
@@ -117,29 +128,50 @@ class MetaFS:
 
     # --- Extra Attributes ---------------------------------------------------
     def setxattr(self, path, name, value, flags):
-        item = self.mongo.get(path)
-        if item == None:
-            return
-        item.xattr[name] = value
-        self.mongo.updateFile(path,item)
-
-    def getxattr(self, path, name, size):
+	logging.info("Inside setxattr")
         item = getItem(self.mongo.get(path))
         if item == None:
             return
-        value = item.xattr['name']
+	if hasattr(item, name):
+		setattr(item, name, value)
+	else:
+		item.xattr[name] = value
+	
+        self.mongo.updateFile(path,item.getMetadata())
+
+    def getxattr(self, path, name, size):
+	value = ""
+	logging.info("Inside getxattr for "+name)
+        item = getItem(self.mongo.get(path))
+	logging.info(item.getMetadata()['author'])
+	logging.info("Size is %s" % size)
+        if item == None:
+            return
+	if hasattr(item, name):
+		value = getattr(item, name)
+	else:
+		value = item.xattr[name]
+	#TODO: Check if we need the following two lines. Size is always 0 though! 
         if size == 0:   # We are asked for size of the value
             return len(value)
+	logging.info("Returning %s" % value)
         return value
 
     def listxattr(self, path, size):
+	logging.info("Inside ListXAttr")
         item = getItem(self.mongo.get(path))
         if item == None:
             return
-        attrs = item.xattr.keys()
+        #attrs = item.xattr.keys()
+	attrs = self.attributes[item.category]
+
+	for i in item.xattr.keys():
+		attrs.append(i)
+
         if size == 0:
             return len(attrs) + len(''.join(attrs))
-        return attrs
+        
+	return attrs
 
     def removexattr(self, path, name):
         item = getItem(self.mongo.get(path))
@@ -148,6 +180,9 @@ class MetaFS:
         xattrs=item.xattr
         if name in xattrs:
             del name
+	if hasattr(item, name):
+		setattr(item, name, "")
+
         item.xattr=xattrs
         self.mongo.updateFile(path,item.getMetadata())
 
@@ -165,6 +200,10 @@ class MetaFS:
     def create(self, path, flags, mode):
         logging.info("Creating File")
         item = Item(mode | stat.S_IFREG, self.uid, self.gid)
+	fileName, fileExtension = os.path.splitext(path)
+	item.category = self.extensions[fileExtension[1:]]
+	for attr in self.attributes[item.category]:
+		setattr(item, attr, "") #DEFAULT VALUE FOR EACH ATTR IS NULL
         self.mongo.updateFile(path,item.getMetadata())
         self.kv.updateFile(path,item.getData())
         self.kv.commit()
@@ -281,7 +320,7 @@ class MetaFS:
         parent_path = os.path.dirname(path)
         filename = os.path.basename(path)
         data = self.kv.get(parent_path)
-        logging.info("Parent data before adding"+data)
+        #logging.info("Parent data before adding"+data)
         dir_items=eval(data)
         if filename not in dir_items:
             logging.info(dir_items)
@@ -298,7 +337,7 @@ class MetaFS:
         parent_path = os.path.dirname(path)
         filename = os.path.basename(path)
         data = self.kv.get(parent_path)
-        logging.info("Parent directory data is "+data)
+        #logging.info("Parent directory data is "+data)
         dir_items=eval(data)
 
         if filename in dir_items:

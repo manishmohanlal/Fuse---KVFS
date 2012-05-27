@@ -4,21 +4,39 @@ Created on May 16, 2012
 @author: anduril
 '''
 ''' --------------- Helper Functions ---------------------------'''
-import pycrypt
 import mycrypto
 import logging 
 from item import Item
 import ConfigParser
 
 def initialize():
+    _attributes = 'Attributes'
+    _default = 'KFSConfig'
+    _extensions = 'Extensions'
+
     initialValSet = {}
+    attributeDict = {} 
+    extensionDict = {}
+
     config = ConfigParser.RawConfigParser()
     config.read('kfs_config.cfg')
-    initialValSet['db_loc'] = config.get('KFSConfig', 'dataFile')
-    initialValSet['mongo_host'] = config.get('KFSConfig', 'metadataHost')
-    initialValSet['mongo_port'] = config.getint('KFSConfig', 'metadataPort')
-    initialValSet['log'] = config.get('KFSConfig', 'logFile')
-    initialValSet['mode'] = config.getint('KFSConfig', 'defaultMode')
+
+    items = config.items(_default)
+    for key, value in items:
+	initialValSet[key] = value
+
+    items = config.items(_attributes)
+    for key, value in items:
+	attributeDict[key] = [x.strip() for x in value.split(",")]
+
+    items = config.items(_extensions)
+    for key, value in items:
+	extensionDict.update(dict.fromkeys([x.strip() for x in value.split(",")], key))
+	#extensionDict[[x.strip() for x in value.split(",")]] = key
+
+    initialValSet[_attributes] = attributeDict
+    initialValSet[_extensions] = extensionDict
+
     return initialValSet
 
 def read(data, offset, length):
