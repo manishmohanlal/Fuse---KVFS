@@ -128,6 +128,7 @@ class MetaFS:
 
     # --- Extra Attributes ---------------------------------------------------
     def setxattr(self, path, name, value, flags):
+	name = name.split(".")[1]
 	logging.info("Inside setxattr")
         item = getItem(self.mongo.get(path))
         if item == None:
@@ -141,6 +142,7 @@ class MetaFS:
 
     def getxattr(self, path, name, size):
 	value = ""
+	name = name.split(".")[1] #REMOVE user. from string.
 	logging.info("Inside getxattr for "+name)
         item = getItem(self.mongo.get(path))
 	logging.info(item.getMetadata()['author'])
@@ -155,7 +157,7 @@ class MetaFS:
         if size == 0:   # We are asked for size of the value
             return len(value)
 	logging.info("Returning %s" % value)
-        return value
+        return str(value)
 
     def listxattr(self, path, size):
 	logging.info("Inside ListXAttr")
@@ -163,10 +165,11 @@ class MetaFS:
         if item == None:
             return
         #attrs = item.xattr.keys()
-	attrs = self.attributes[item.category]
-
+	attrs = ["user."+x for x in self.attributes[item.category]]
+	
 	for i in item.xattr.keys():
-		attrs.append(i)
+		if i not in attrs:
+			attrs.append("user."+i)
 
         if size == 0:
             return len(attrs) + len(''.join(attrs))

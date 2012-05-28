@@ -74,7 +74,7 @@ class KFS(fuse.Fuse):
 
     def getxattr(self, path, name, size):
 	value = self.metafs.getxattr(path, name, size)
-	return str(value)
+	return value
 
     def listxattr(self, path, size):
 	return self.metafs.listxattr(path, size)
