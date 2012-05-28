@@ -8,8 +8,10 @@ import mycrypto
 import logging 
 from item import Item
 import ConfigParser
+import os 
 
 def initialize():
+    path = os.getenv("KFS_PATH")
     _attributes = 'Attributes'
     _default = 'KFSConfig'
     _extensions = 'Extensions'
@@ -19,7 +21,7 @@ def initialize():
     extensionDict = {}
 
     config = ConfigParser.RawConfigParser()
-    config.read('kfs_config.cfg')
+    config.read(path+'/kfs_config.cfg')
 
     items = config.items(_default)
     for key, value in items:

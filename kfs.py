@@ -87,6 +87,9 @@ def main():
 HTFS - HashTable File-System
 
 """ + fuse.Fuse.fusage
+    os.environ["KFS_PATH"] = os.getcwd()
+    print os.getenv("KFS_PATH")
+    print os.getcwd()
     initialValSet = initialize()
     module = sys.modules[__name__]	
      

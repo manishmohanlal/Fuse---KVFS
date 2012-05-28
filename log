@@ -1,0 +1,294 @@
+INFO:root:Initializing MetaFS
+INFO:root:Get Metadata
+INFO:root:Get Data
+INFO:root:getattr
+INFO:root:Getting attributes for path/.Trash
+INFO:root:getattr
+INFO:root:Getting attributes for path/.xdg-volume-info
+INFO:root:getattr
+INFO:root:Getting attributes for path/autorun.inf
+INFO:root:Reading Directory
+INFO:root:getattr
+INFO:root:Getting attributes for path/.Trash-1000
+INFO:root:Reading Directory
+INFO:root:Reading Directory
+INFO:root:Reading Directory
+INFO:root:Reading Directory
+INFO:root:Reading Directory
+INFO:root:Reading Directory
+INFO:root:Reading Directory
+INFO:root:Reading Directory
+INFO:root:Reading Directory
+INFO:root:Reading Directory
+INFO:root:Reading Directory
+INFO:root:Reading Directory
+INFO:root:Reading Directory
+INFO:root:Reading Directory
+INFO:root:Reading Directory
+INFO:root:Reading Directory
+INFO:root:Reading Directory
+INFO:root:Reading Directory
+INFO:root:Reading Directory
+INFO:root:Reading Directory
+INFO:root:getattr
+INFO:root:Getting attributes for path/autorun.inf
+INFO:root:getattr
+INFO:root:Getting attributes for path/
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'atime': 1337905911.551376, u'uid': 1000, u'dev': 0, u'datalen': 23, u'gid': 1000, u'mode': 17139, u'mtime': 1337905911.551376, u'_id': u'/', u'xattr': {}, u'ctime': 1337905911.551376}
+INFO:root:stat.ino = 0
+INFO:root:getattr
+INFO:root:Getting attributes for path/preethi.pdf
+INFO:root:getattr
+INFO:root:Getting attributes for path/preethi.pdf
+INFO:root:getattr
+INFO:root:Getting attributes for path/preethi.pdf
+INFO:root:getattr
+INFO:root:Getting attributes for path/preethi.pdf
+INFO:root:getattr
+INFO:root:Getting attributes for path/preethi.pdf
+INFO:root:getattr
+INFO:root:Getting attributes for path/preethi.pdf
+INFO:root:getattr
+INFO:root:Getting attributes for path/preethi.pdf
+INFO:root:getattr
+INFO:root:Getting attributes for path/.preethi.pdf.swp
+INFO:root:getattr
+INFO:root:Getting attributes for path/.preethi.pdf.swp
+INFO:root:Creating File
+INFO:root:getattr
+INFO:root:Getting attributes for path/.preethi.pdf.swp
+INFO:root:getattr
+INFO:root:Getting attributes for path/.preethi.pdf.swp
+INFO:root:getattr
+INFO:root:Getting attributes for path/.preethi.pdf.swp
+INFO:root:getattr
+INFO:root:Getting attributes for path/.preethi.pdf.swp
+INFO:root:Creating File
+INFO:root:getattr
+INFO:root:Getting attributes for path/preethi.pdf
+INFO:root:getattr
+INFO:root:Getting attributes for path/preethi.pdf
+INFO:root:getattr
+INFO:root:Getting attributes for path/preethi.pdf
+INFO:root:getattr
+INFO:root:Getting attributes for path/preethi.pdf
+INFO:root:getattr
+INFO:root:Getting attributes for path/preethi.pdf
+INFO:root:getattr
+INFO:root:Getting attributes for path/preethi.pdf
+INFO:root:getattr
+INFO:root:Getting attributes for path/preethi.pdf
+INFO:root:getattr
+INFO:root:Getting attributes for path/preethi.pdf
+INFO:root:getattr
+INFO:root:Getting attributes for path/preethi.pdf
+INFO:root:Creating File
+INFO:root:Get Metadata
+INFO:root:Get Data
+INFO:root:update
+INFO:root:Adding dir path = /preethi.pdf
+INFO:root:[]
+INFO:root:['preethi.pdf']
+INFO:root:update
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'atime': 1337905911.551376, u'uid': 1000, u'dev': 0, u'datalen': 23, u'gid': 1000, u'mode': 17139, u'mtime': 1337905911.551376, u'_id': u'/', u'xattr': {}, u'ctime': 1337905911.551376}
+INFO:root:Get Metadata
+INFO:root:getattr
+INFO:root:Getting attributes for path/preethi.pdf
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:stat.ino = 0
+INFO:root:Reading Directory
+INFO:root:getattr
+INFO:root:Getting attributes for path/preethi.pdf
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:stat.ino = 0
+INFO:root:getattr
+INFO:root:Getting attributes for path/preethi.pdf
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:stat.ino = 0
+INFO:root:getattr
+INFO:root:Getting attributes for path/preethi.pdf
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:stat.ino = 0
+INFO:root:Inside setxattr
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:Get Metadata
+INFO:root:Reading Directory
+INFO:root:getattr
+INFO:root:Getting attributes for path/preethi.pdf
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'preethi', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:stat.ino = 0
+INFO:root:Inside ListXAttr
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'preethi', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:Inside ListXAttr
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'preethi', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:Inside getxattr for author
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'preethi', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:Get Metadata
+INFO:root:preethi
+INFO:root:Size is 0
+INFO:root:Inside getxattr for author
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'preethi', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:Get Metadata
+INFO:root:preethi
+INFO:root:Size is 7
+INFO:root:Returning preethi
+INFO:root:Inside getxattr for publisher
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'preethi', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:Get Metadata
+INFO:root:preethi
+INFO:root:Size is 0
+INFO:root:Inside getxattr for publisher
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'preethi', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:Get Metadata
+INFO:root:preethi
+INFO:root:Size is 0
+INFO:root:Inside getxattr for year
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'preethi', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:Get Metadata
+INFO:root:preethi
+INFO:root:Size is 0
+INFO:root:Inside getxattr for year
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'preethi', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:Get Metadata
+INFO:root:preethi
+INFO:root:Size is 0
+INFO:root:Inside getxattr for title
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'preethi', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:Get Metadata
+INFO:root:preethi
+INFO:root:Size is 0
+INFO:root:Inside getxattr for title
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'preethi', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:Get Metadata
+INFO:root:preethi
+INFO:root:Size is 0
+INFO:root:getattr
+INFO:root:Getting attributes for path/getfat
+INFO:root:getattr
+INFO:root:Getting attributes for path/getfattr
+INFO:root:getattr
+INFO:root:Getting attributes for path/getfattr
+INFO:root:Reading Directory
+INFO:root:getattr
+INFO:root:Getting attributes for path/preethi.pdf
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'preethi', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:stat.ino = 0
+INFO:root:Inside ListXAttr
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'preethi', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:Inside ListXAttr
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'preethi', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:Inside getxattr for author
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'preethi', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:Get Metadata
+INFO:root:preethi
+INFO:root:Size is 0
+INFO:root:Inside getxattr for author
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'preethi', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:Get Metadata
+INFO:root:preethi
+INFO:root:Size is 256
+INFO:root:Returning preethi
+INFO:root:Inside getxattr for publisher
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'preethi', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:Get Metadata
+INFO:root:preethi
+INFO:root:Size is 0
+INFO:root:Inside getxattr for publisher
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'preethi', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:Get Metadata
+INFO:root:preethi
+INFO:root:Size is 256
+INFO:root:Returning 
+INFO:root:Inside getxattr for title
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'preethi', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:Get Metadata
+INFO:root:preethi
+INFO:root:Size is 0
+INFO:root:Inside getxattr for title
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'preethi', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:Get Metadata
+INFO:root:preethi
+INFO:root:Size is 256
+INFO:root:Returning 
+INFO:root:Inside getxattr for year
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'preethi', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:Get Metadata
+INFO:root:preethi
+INFO:root:Size is 0
+INFO:root:Inside getxattr for year
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'category': u'books', u'publisher': u'', u'atime': 1338172739.719259, u'uid': 1000, u'author': u'preethi', u'year': u'', u'dev': 0, u'datalen': 0, u'gid': 1000, u'mode': 33204, u'mtime': 1338172739.719259, u'title': u'', u'_id': u'/preethi.pdf', u'xattr': {}, u'ctime': 1338172739.719259}
+INFO:root:Get Metadata
+INFO:root:preethi
+INFO:root:Size is 256
+INFO:root:Returning 
+INFO:root:Reading Directory
+INFO:root:getattr
+INFO:root:Getting attributes for path/
+INFO:root:Loading __dict__
+INFO:root:__dict__ initialized
+INFO:root:{u'atime': 1337905911.551376, u'uid': 1000, u'dev': 0, u'datalen': 15, u'gid': 1000, u'mode': 17139, u'mtime': 1337905911.551376, u'_id': u'/', u'xattr': {}, u'ctime': 1337905911.551376}
+INFO:root:stat.ino = 0
+INFO:root:getattr
+INFO:root:Getting attributes for path/.git
+INFO:root:getattr
+INFO:root:Getting attributes for path/.git
+INFO:root:getattr
+INFO:root:Getting attributes for path/objects
