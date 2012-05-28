@@ -1,7 +1,7 @@
 import bsddb
 import logging
 from pymongo import Connection
-
+import pymongo
 class mongoWrapper:
 	def __init__(self, host, port):
 		self.connection = Connection(host, port)
@@ -39,4 +39,8 @@ class mongoWrapper:
 
 	def close(self):
 		self.collection.disconnect()
+
+
+	def createIndex(self,indexattribute):
+		self.collection.ensure_index([(indexattribute,pymongo.ASCENDING)],sparse=True)
 
